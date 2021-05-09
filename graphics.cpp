@@ -12,20 +12,12 @@ const int SIDE_LENGTH = 20;
 
 Button smileButton({1, 0, 0}, {250, 100}, 100, 50, "Smiley Face");
 
-Button balloonButton({0,1,0},{100,250},100,50,"Balloon");
-
-Button starButton({0,0,1},{250,400}, 100,50,"Star");
-
-Button heartButton({1,0,1},{400,250}, 100,50,"Heart");
 
 enum Screen {
     StartScreen,
     MenuScreen,
     EndScreen,
-    SmileFace,
-    Balloon,
-    Star,
-    Heart,
+
 };
 
 Screen screenState = StartScreen;
@@ -63,7 +55,7 @@ void display() {
      */
     // Starting Display screen press space bar to move to the Menu
     if (screenState == StartScreen) {
-        string label = "Welcome to the Art Expo!";
+        string label = "Welcome to Maze runner>!";
         glColor3f(1, 1, 1);
         glRasterPos2i(250, 250);
         for (const char &letter : label) {
@@ -71,252 +63,6 @@ void display() {
         }
     }
 
-    if (screenState == MenuScreen) {
-        string label = "Use the Keys";
-        glColor3f(1, 1, 1);
-        glRasterPos2i(200, 250);
-        for (const char &letter : label) {
-            glutBitmapCharacter(GLUT_BITMAP_8_BY_13, letter);
-        }
-        string label1 = "To choose an option!";
-        glColor3f(1, 1, 1);
-        glRasterPos2i(170, 270);
-        for (const char &letter : label1) {
-            glutBitmapCharacter(GLUT_BITMAP_8_BY_13, letter);
-        }
-        string label2 = "(Press Space to go Back)";
-        glColor3f(1, 1, 1);
-        glRasterPos2i(155, 290);
-        for (const char &letter : label2) {
-            glutBitmapCharacter(GLUT_BITMAP_8_BY_13, letter);
-        }
-
-        smileButton.draw();
-        balloonButton.draw();
-        starButton.draw();
-        heartButton.draw();
-    }
-
-    // Determine what image to display
-
-
-    // Smiley face
-    if (screenState == SmileFace) {
-        ifstream inFile("../smile.txt");
-        inFile >> noskipws;
-        int xCoord = 0, yCoord = 0;
-        char letter;
-        bool draw;
-        while (inFile >> letter) {
-            draw = true;
-            switch (letter) {
-                case 'r':
-                    glColor3f(1, 0, 0);
-                    break;
-                case 'g':
-                    glColor3f(0, 1, 0);
-                    break;
-                case 'b':
-                    glColor3f(0, 0, 1);
-                    break;
-                case 'y':
-                    glColor3f(1, 1, 0);
-                    break;
-                case 'm':
-                    glColor3f(1, 0, 1);
-                    break;
-                case 'c':
-                    glColor3f(0, 1, 1);
-                    break;
-                case ' ':
-                    glColor3f(0, 0, 0);
-                    break;
-                case 'w':
-                    glColor3f(1,1,1);
-                    break;
-                default: // newline
-                    draw = false;
-                    xCoord = 0;
-                    yCoord += SIDE_LENGTH;
-            }
-            if (draw) {
-                glBegin(GL_QUADS);
-                glVertex2i(xCoord, yCoord);
-                glVertex2i(xCoord + SIDE_LENGTH, yCoord);
-                glVertex2i(xCoord + SIDE_LENGTH, yCoord + SIDE_LENGTH);
-                glVertex2i(xCoord, yCoord + SIDE_LENGTH);
-                glEnd();
-                xCoord += SIDE_LENGTH;
-            }
-        }
-        inFile.close();
-    }
-
-    // Balloon
-    if (screenState == Balloon) {
-        ifstream inFile("../balloon.txt");
-        inFile >> noskipws;
-        int xCoord = 0, yCoord = 0;
-        char letter;
-        bool draw;
-        while (inFile >> letter) {
-            draw = true;
-            switch (letter) {
-                case 'r':
-                    glColor3f(1, 0, 0);
-                    break;
-                case 'g':
-                    glColor3f(0, 1, 0);
-                    break;
-                case 'b':
-                    glColor3f(0, 0, 1);
-                    break;
-                case 'y':
-                    glColor3f(1, 1, 0);
-                    break;
-                case 'm':
-                    glColor3f(1, 0, 1);
-                    break;
-                case 'c':
-                    glColor3f(0, 1, 1);
-                    break;
-                case ' ':
-                    glColor3f(0, 0, 0);
-                    break;
-                case 'w':
-                    glColor3f(1,1,1);
-                    break;
-                default: // newline
-                    draw = false;
-                    xCoord = 0;
-                    yCoord += SIDE_LENGTH;
-            }
-            if (draw) {
-                glBegin(GL_QUADS);
-                glVertex2i(xCoord, yCoord);
-                glVertex2i(xCoord + SIDE_LENGTH, yCoord);
-                glVertex2i(xCoord + SIDE_LENGTH, yCoord + SIDE_LENGTH);
-                glVertex2i(xCoord, yCoord + SIDE_LENGTH);
-                glEnd();
-                xCoord += SIDE_LENGTH;
-            }
-        }
-        inFile.close();
-    }
-
-    // Star
-    if (screenState == Star) {
-        ifstream inFile("../star.txt");
-        inFile >> noskipws;
-        int xCoord = 0, yCoord = 0;
-        char letter;
-        bool draw;
-        while (inFile >> letter) {
-            draw = true;
-            switch (letter) {
-                case 'r':
-                    glColor3f(1, 0, 0);
-                    break;
-                case 'g':
-                    glColor3f(0, 1, 0);
-                    break;
-                case 'b':
-                    glColor3f(0, 0, 1);
-                    break;
-                case 'y':
-                    glColor3f(1, 1, 0);
-                    break;
-                case 'm':
-                    glColor3f(1, 0, 1);
-                    break;
-                case 'c':
-                    glColor3f(0, 1, 1);
-                    break;
-                case ' ':
-                    glColor3f(0, 0, 0);
-                    break;
-                case 'w':
-                    glColor3f(1,1,1);
-                    break;
-                default: // newline
-                    draw = false;
-                    xCoord = 0;
-                    yCoord += SIDE_LENGTH;
-            }
-            if (draw) {
-                glBegin(GL_QUADS);
-                glVertex2i(xCoord, yCoord);
-                glVertex2i(xCoord + SIDE_LENGTH, yCoord);
-                glVertex2i(xCoord + SIDE_LENGTH, yCoord + SIDE_LENGTH);
-                glVertex2i(xCoord, yCoord + SIDE_LENGTH);
-                glEnd();
-                xCoord += SIDE_LENGTH;
-            }
-        }
-        inFile.close();
-    }
-
-    // Heart
-    if (screenState == Heart) {
-        ifstream inFile("../heart.txt");
-        inFile >> noskipws;
-        int xCoord = 0, yCoord = 0;
-        char letter;
-        bool draw;
-        while (inFile >> letter) {
-            draw = true;
-            switch (letter) {
-                case 'r':
-                    glColor3f(1, 0, 0);
-                    break;
-                case 'g':
-                    glColor3f(0, 1, 0);
-                    break;
-                case 'b':
-                    glColor3f(0, 0, 1);
-                    break;
-                case 'y':
-                    glColor3f(1, 1, 0);
-                    break;
-                case 'm':
-                    glColor3f(1, 0, 1);
-                    break;
-                case 'c':
-                    glColor3f(0, 1, 1);
-                    break;
-                case ' ':
-                    glColor3f(0, 0, 0);
-                    break;
-                case 'w':
-                    glColor3f(1,1,1);
-                    break;
-                default: // newline
-                    draw = false;
-                    xCoord = 0;
-                    yCoord += SIDE_LENGTH;
-            }
-            if (draw) {
-                glBegin(GL_QUADS);
-                glVertex2i(xCoord, yCoord);
-                glVertex2i(xCoord + SIDE_LENGTH, yCoord);
-                glVertex2i(xCoord + SIDE_LENGTH, yCoord + SIDE_LENGTH);
-                glVertex2i(xCoord, yCoord + SIDE_LENGTH);
-                glEnd();
-                xCoord += SIDE_LENGTH;
-            }
-        }
-        inFile.close();
-    }
-
-    if (screenState == EndScreen) {
-        initGL();
-        string label = "Woooo Party Time!";
-        glColor3f(1, 1, 1);
-        glRasterPos2i(250, 250);
-        for (const char &letter : label) {
-            glutBitmapCharacter(GLUT_BITMAP_8_BY_13, letter);
-        }
-    }
 
 
 
@@ -345,16 +91,16 @@ void kbd(unsigned char key, int x, int y) {
 void kbdS(int key, int x, int y) {
     switch(key) {
         case GLUT_KEY_DOWN:
-            screenState = Star;
+
             break;
         case GLUT_KEY_LEFT:
-            screenState = Balloon;
+
             break;
         case GLUT_KEY_RIGHT:
-            screenState = Heart;
+
             break;
         case GLUT_KEY_UP:
-            screenState = SmileFace;
+
             break;
     }
     
