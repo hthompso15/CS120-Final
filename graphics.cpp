@@ -9,13 +9,16 @@ using namespace std;
 GLdouble width, height;
 int wd;
 const int SIDE_LENGTH = 20;
+vector<Quad> walls;
 
-Button smileButton({1, 0, 0}, {250, 100}, 100, 50, "Smiley Face");
+Button levelOne({1, 0, 0}, {100, 250}, 100, 50, "Play!");
+Quad square({1,0,0},{250,5},10,10);
 
 
 enum Screen {
     StartScreen,
     MenuScreen,
+    MazeScreen,
     EndScreen,
 
 };
@@ -55,7 +58,7 @@ void display() {
      */
     // Starting Display screen press space bar to move to the Menu
     if (screenState == StartScreen) {
-        string label = "Welcome to Maze runner>!";
+        string label = "Welcome to Maze runner!";
         glColor3f(1, 1, 1);
         glRasterPos2i(250, 250);
         for (const char &letter : label) {
@@ -63,6 +66,64 @@ void display() {
         }
     }
 
+    if (screenState == MenuScreen) {
+        string label = "Press the button to play!";
+        glColor3f(1, 1, 1);
+        glRasterPos2i(200, 250);
+        for (const char &letter : label) {
+            glutBitmapCharacter(GLUT_BITMAP_8_BY_13, letter);
+
+            levelOne.draw();
+
+        }
+    }
+
+    if(screenState == MazeScreen) {
+
+
+
+        Quad wall({1,1,1}, {125,0}, 225,25);
+        wall.draw();
+        walls.push_back(wall);
+
+        Quad topWall1({1,1,1}, {375,0}, 225,25);
+        topWall1.draw();
+        walls.push_back(topWall1);
+
+        Quad wall1({1,1,1}, {0,250}, 25,500);
+        wall1.draw();
+        walls.push_back(wall1);
+
+        Quad wall2({1,1,1}, {500,250}, 25,500);
+        wall2.draw();
+        walls.push_back(wall2);
+
+        Quad wall3({1,1,1}, {250,500}, 500,25);
+        wall3.draw();
+        walls.push_back(wall3);
+
+        Quad wall4({1,1,1}, {250,250}, 25,450);
+        wall4.draw();
+        walls.push_back(wall4);
+
+        Quad wall5({1,1,1}, {250,250}, 400,25);
+        wall5.draw();
+        walls.push_back(wall5);
+
+        Quad wall6({1,1,1}, {250,100}, 405,25);
+        wall6.draw();
+        walls.push_back(wall6);
+
+        square.draw();
+
+
+        for(int i = 0; i < walls.size();i++) {
+            if( square.isOverlapping(walls[i]) ) {
+                screenState = EndScreen;
+            }
+        }
+
+    }
 
 
 
@@ -81,6 +142,10 @@ void kbd(unsigned char key, int x, int y) {
         screenState = MenuScreen;
     }
 
+    if(key == '1') {
+        screenState = MazeScreen;
+    }
+
     if(key == 'e') {
         screenState = EndScreen;
     }
@@ -91,16 +156,17 @@ void kbd(unsigned char key, int x, int y) {
 void kbdS(int key, int x, int y) {
     switch(key) {
         case GLUT_KEY_DOWN:
+            square.move(0, 5);
 
             break;
         case GLUT_KEY_LEFT:
-
+            square.move(-5, 0);
             break;
         case GLUT_KEY_RIGHT:
-
+            square.move(5, 0);
             break;
         case GLUT_KEY_UP:
-
+            square.move(0, -5);
             break;
     }
     

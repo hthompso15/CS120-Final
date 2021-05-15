@@ -96,9 +96,11 @@ void Quad::draw() const {
 
     glEnd();
 
-
-
-    // Don't forget to set the color to the fill field
-
 }
 
+bool Quad::isOverlapping(const Quad &r) {
+    if (this->getLeftX() < r.getLeftX() && this->getRightX() > r.getRightX() && this->getTopY() <  r.getTopY() && this->getBottomY() > r.getBottomY())
+        return true;
+    else
+        return false;
+}
