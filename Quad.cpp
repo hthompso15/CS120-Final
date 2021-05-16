@@ -99,7 +99,7 @@ void Quad::draw() const {
 }
 
 bool Quad::isOverlapping(const Quad &r) {
-    if (this->getLeftX() < r.getLeftX() && this->getRightX() > r.getRightX() && this->getTopY() <  r.getTopY() && this->getBottomY() > r.getBottomY())
+    if (this->getLeftX() < r.getLeftX() && this->getRightX() > r.getRightX() && this->getTopY() < r.getTopY() && this->getBottomY() > r.getBottomY())
         return true;
     else
         return false;
