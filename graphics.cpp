@@ -214,10 +214,6 @@ void kbd(unsigned char key, int x, int y) {
         glutDestroyWindow(wd);
         exit(0);
     }
-
-    if (key == 32) {
-        screenState = WinScreen;
-    }
     
     glutPostRedisplay();
 }
