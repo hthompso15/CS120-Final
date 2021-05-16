@@ -5,6 +5,7 @@
 #include <time.h>
 #include <vector>
 using namespace std;
+// Hello
 
 GLdouble width, height;
 int wd;
