@@ -1,7 +1,5 @@
 #include "graphics.h"
 #include "Button.h"
-#include <iostream>
-#include <fstream>
 #include <time.h>
 #include <vector>
 using namespace std;
@@ -77,9 +75,16 @@ void display() {
             glutBitmapCharacter(GLUT_BITMAP_8_BY_13, letter);
         }
 
-        string label2 = "and get to the purple square! Click Play to start!";
+        string label3 = "use the keys to move the red square";
         glColor3f(1, 1, 1);
         glRasterPos2i(75, 200);
+        for (const char &letter : label3) {
+            glutBitmapCharacter(GLUT_BITMAP_8_BY_13, letter);
+        }
+
+        string label2 = "and get to the purple square! Click Play to start!";
+        glColor3f(1, 1, 1);
+        glRasterPos2i(75, 225);
         for (const char &letter : label2) {
             glutBitmapCharacter(GLUT_BITMAP_8_BY_13, letter);
         }
@@ -89,6 +94,7 @@ void display() {
 
 
     if(screenState == MazeScreen) {
+        square.draw();
 
         Quad wall({1,1,1}, {125,0}, 225,25);
         wall.draw();
@@ -177,12 +183,13 @@ void display() {
         for(int i = 0; i < walls.size();i++) {
             if(walls[i].isOverlapping(square) ) {
                 screenState = EndScreen;
+
             }
         }
     }
 
     if (screenState == EndScreen) {
-        string label1 = "You Lose :(  Re-Run the program to try again!";
+        string label1 = "You Lose :(  press 'e' to try again!";
         glColor3f(1, 1, 1);
         glRasterPos2i(100, 250);
         for (const char &letter : label1) {
@@ -192,6 +199,12 @@ void display() {
     }
 
     if (screenState == WinScreen) {
+        string label1 = "(Click the Button)";
+        glColor3f(1, 1, 1);
+        glRasterPos2i(100, 250);
+        for (const char &letter : label1) {
+            glutBitmapCharacter(GLUT_BITMAP_8_BY_13, letter);
+        }
 
         winButton.draw();
         int confettis = 0;
@@ -214,6 +227,7 @@ void kbd(unsigned char key, int x, int y) {
         glutDestroyWindow(wd);
         exit(0);
     }
+
     
     glutPostRedisplay();
 }
