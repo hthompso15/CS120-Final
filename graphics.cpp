@@ -189,7 +189,7 @@ void display() {
     }
 
     if (screenState == EndScreen) {
-        string label1 = "You Lose :(  press 'e' to try again!";
+        string label1 = "You Lose :( re-run the program to try again!";
         glColor3f(1, 1, 1);
         glRasterPos2i(100, 250);
         for (const char &letter : label1) {

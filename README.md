@@ -25,7 +25,7 @@ confetti will pop up. The program must be re-run to try again.
 - Down Arrow : moves the character down;
 - Left Arrow : moves the character left;
 - Right Arrow : moves the character right;
-- 'e' : Brings you back to the maze;
+
 
 # Concepts Used
 - From module 2 I used class concepts such as the "is-a" relationship between the quad
