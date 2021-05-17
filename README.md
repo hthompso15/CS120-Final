@@ -6,7 +6,8 @@ character through the maze without touching the walls all the way to the purple
 square to win!
 
 ## Setup
-Lucky for you nothing extra needs to be done to set this up. Just press run and go!
+This code is set up to be run on an OSX operating system but other than that 
+lucky for you nothing extra needs to be done to set this up. Just press run and go!
 
 # Running the Program
 When first running the program you will that starts with a menu screen 
@@ -26,5 +27,14 @@ confetti will pop up. The program must be re-run to try again.
 - Right Arrow : moves the character right;
 - 'e' : Brings you back to the maze;
 
+# Concepts Used
+- From module 2 I used class concepts such as the "is-a" relationship between the quad
+and button classes
+- From module 4 I used a lot of graphics concepts as well as keyboard and mouse inputs
+
+# Code used
+I used some of the starter code from the classes given to us by the professor such
+as the Quad and button class and the graphics starter. I also used a method from the confetti 
+project as well that I implemented.
 
 # Hope you enjoyed!
