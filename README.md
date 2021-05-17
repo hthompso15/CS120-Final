@@ -37,4 +37,4 @@ I used some of the starter code from the classes given to us by the professor su
 as the Quad and button class and the graphics starter. I also used a method from the confetti 
 project as well that I implemented.
 
-# Hope you enjoyed!
+# Thank you and I hope you enjoyed!
